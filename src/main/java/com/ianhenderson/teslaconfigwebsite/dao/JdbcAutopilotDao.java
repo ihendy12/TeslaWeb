@@ -3,10 +3,12 @@ package com.ianhenderson.teslaconfigwebsite.dao;
 
 
 import com.ianhenderson.teslaconfigwebsite.model.Autopilot;
+import com.ianhenderson.teslaconfigwebsite.model.Customer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -47,7 +49,15 @@ public class JdbcAutopilotDao implements AutopilotDao {
 
     @Override
     public List<Autopilot> getAllAutopilotOptions() {
-        return null;
+        List <Autopilot> autopilots = new ArrayList<>();
+        String sql = "SELECT * " +
+                "FROM autopilot ORDER BY autopilot_level_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()){
+            autopilots.add(mapRowToAutopilot(results));
+        }
+        return autopilots;
+
     }
 
     @Override

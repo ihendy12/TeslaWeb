@@ -1,10 +1,12 @@
 package com.ianhenderson.teslaconfigwebsite.dao;
+import com.ianhenderson.teslaconfigwebsite.model.Customer;
 import com.ianhenderson.teslaconfigwebsite.model.Interior;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcInteriorDao implements InteriorDao {
@@ -44,7 +46,14 @@ public class JdbcInteriorDao implements InteriorDao {
 
     @Override
     public List<Interior> getAllInteriors() {
-        return null;
+        List <Interior> interiors = new ArrayList<>();
+        String sql = "SELECT * " +
+                "FROM interior_color ORDER BY interior_color_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()){
+            interiors.add(mapRowToInterior(results));
+        }
+        return interiors;
     }
 
     @Override

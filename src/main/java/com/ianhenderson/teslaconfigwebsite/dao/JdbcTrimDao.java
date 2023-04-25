@@ -1,9 +1,12 @@
 package com.ianhenderson.teslaconfigwebsite.dao;
+import com.ianhenderson.teslaconfigwebsite.model.Customer;
 import com.ianhenderson.teslaconfigwebsite.model.Trim;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JdbcTrimDao implements TrimDao {
 
@@ -43,6 +46,19 @@ public class JdbcTrimDao implements TrimDao {
     public Trim createTrim(Trim newTrim) {
         return null;
     }
+
+    @Override
+    public List<Trim> getAllTrims() {
+        List <Trim> trims = new ArrayList<>();
+        String sql = "SELECT * " +
+                "FROM trim_level ORDER BY trim_level_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()){
+            trims.add(mapRowToTrim(results));
+        }
+        return trims;
+    }
+
 
     private Trim mapRowToTrim(SqlRowSet rowSet){
         Trim trim = new Trim();

@@ -1,11 +1,14 @@
 package com.ianhenderson.teslaconfigwebsite.dao;
 
 
+import com.ianhenderson.teslaconfigwebsite.model.Customer;
 import com.ianhenderson.teslaconfigwebsite.model.Tow;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JdbcTowDao implements TowDao {
     private JdbcTemplate jdbcTemplate;
@@ -37,6 +40,19 @@ public class JdbcTowDao implements TowDao {
             tow = mapRowToTow(results);
         }
         return tow;
+    }
+
+    @Override
+    public List<Tow> getTowOptions() {
+        List <Tow> tows = new ArrayList<>();
+        String sql = "SELECT * " +
+                "FROM tow_hitch ORDER BY tow_hitch_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()){
+            tows.add(mapRowToTow(results));
+        }
+        return tows;
+
     }
 
     private Tow mapRowToTow(SqlRowSet rowSet){

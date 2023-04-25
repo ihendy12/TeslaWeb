@@ -1,9 +1,11 @@
 package com.ianhenderson.teslaconfigwebsite.dao;
+import com.ianhenderson.teslaconfigwebsite.model.Customer;
 import com.ianhenderson.teslaconfigwebsite.model.Wheel;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcWheelDao implements WheelDao {
@@ -43,8 +45,16 @@ public class JdbcWheelDao implements WheelDao {
 
     @Override
     public List<Wheel> getAllWheels() {
-        return null;
+        List <Wheel> wheels = new ArrayList<>();
+        String sql = "SELECT * " +
+                "FROM wheel_type ORDER BY wheel_type_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()){
+            wheels.add(mapRowToWheel(results));
+        }
+        return wheels;
     }
+
 
     @Override
     public Wheel createWheel(Wheel newWheel) {

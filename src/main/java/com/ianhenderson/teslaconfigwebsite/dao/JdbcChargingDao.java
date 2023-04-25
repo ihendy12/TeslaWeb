@@ -1,9 +1,12 @@
 package com.ianhenderson.teslaconfigwebsite.dao;
 import com.ianhenderson.teslaconfigwebsite.model.Charging;
+import com.ianhenderson.teslaconfigwebsite.model.Customer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JdbcChargingDao implements ChargingDao {
     private JdbcTemplate jdbcTemplate;
@@ -39,6 +42,20 @@ public class JdbcChargingDao implements ChargingDao {
         }
         return charging;
     }
+
+    @Override
+    public List<Charging> getAllCharging() {
+        List <Charging> chargings = new ArrayList<>();
+        String sql = "SELECT * " +
+                "FROM charging ORDER BY charging_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()){
+            chargings.add(mapRowToCharging(results));
+        }
+        return chargings;
+    }
+
+
 
     private Charging mapRowToCharging(SqlRowSet rowSet){
         Charging charging = new Charging();

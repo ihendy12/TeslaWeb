@@ -1,10 +1,12 @@
 package com.ianhenderson.teslaconfigwebsite.dao;
 
+import com.ianhenderson.teslaconfigwebsite.model.Customer;
 import com.ianhenderson.teslaconfigwebsite.model.Exterior;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcExteriorDao implements ExteriorDao {
@@ -43,7 +45,14 @@ public class JdbcExteriorDao implements ExteriorDao {
 
     @Override
     public List<Exterior> getAllExteriors() {
-        return null;
+        List <Exterior> exteriors = new ArrayList<>();
+        String sql = "SELECT * " +
+                "FROM exterior_color ORDER BY customer_color_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()){
+            exteriors.add(mapRowToExterior(results));
+        }
+        return exteriors;
     }
 
     @Override
