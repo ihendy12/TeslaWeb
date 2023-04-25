@@ -14,44 +14,170 @@
             var modelContainer = document.getElementById('modelContainer');
             for(model of models){
                 var childDiv = document.createElement('div');
-                childDiv.innerHTML = model.name + " " + model.price;
+                childDiv.innerHTML = model.name + "     $" + model.price;
                 modelContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+    <script>
+        async function showAutopilots(){
+            var response = await fetch('/api/autopilots');
+            var autopilots = await response.json();
+
+            var autopilotContainer = document.getElementById('autopilotContainer');
+            for(autopilot of autopilots){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = autopilot.autopilotName + "     $" + autopilot.autopilotPrice;
+                autopilotContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+    <script>
+        async function showChargings(){
+            var response = await fetch('/api/charging');
+            var charging = await response.json();
+
+            var chargingContainer = document.getElementById('chargingContainer');
+            for(charge of charging){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = charge.chargingName + "     $" + charge.chargingPrice;
+                chargingContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+    <script>
+        async function showCustomers(){
+            var response = await fetch('/api/customers');
+            var customers = await response.json();
+
+            var customerContainer = document.getElementById('customerContainer');
+            for(customer of customers){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = customer.modelId;
+                customerContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+    <script>
+        async function showExterior(){
+            var response = await fetch('/api/exteriors');
+            var exteriors = await response.json();
+
+            var exteriorContainer = document.getElementById('exteriorContainer');
+            for(exterior of exteriors){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = exterior.exteriorName + "     $" + exterior.exteriorPrice;
+                exteriorContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+    <script>
+        async function showInteriors(){
+            var response = await fetch('/api/interiors');
+            var interiors = await response.json();
+
+            var interiorContainer = document.getElementById('interiorContainer');
+            for(interior of interiors){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = interior.interiorName + "     $" + interior.interiorPrice;
+                interiorContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+    <script>
+        async function showSeats(){
+            var response = await fetch('/api/seats');
+            var seats = await response.json();
+
+            var seatContainer = document.getElementById('seatContainer');
+            for(seat of seats){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = seat.numOfSeats + "     $" + seat.seatPrice;
+                seatContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+    <script>
+        async function showTows(){
+            var response = await fetch('/api/tows');
+            var tows = await response.json();
+
+            var towContainer = document.getElementById('towContainer');
+            for(tow of tows){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = tow.towConfirmed + "     $" + tow.towPrice;
+                towContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+    <script>
+        async function showTrims(){
+            var response = await fetch('/api/trims');
+            var trims = await response.json();
+
+            var trimContainer = document.getElementById('trimContainer');
+            for(trim of trims){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = trim.trimName + "     $" + trim.trimPrice;
+                trimContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+    <script>
+        async function showWheels(){
+            var response = await fetch('/api/wheels');
+            var wheels = await response.json();
+
+            var wheelContainer = document.getElementById('wheelContainer');
+            for(wheel of wheels){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = wheel.wheelName + "     $" + wheel.wheelPrice;
+                wheelContainer.appendChild(childDiv);
             }
         }
     </script>
 </head>
 <body>
-    <H1>Welcome to my first webpage after learning Java</H1>
+    <H1>Tesla Configurator</H1>
     <h2>List of Models</h2>
         <button onclick="showModels()">Show All Models</button>
         <div id="modelContainer" style="color: blue"></div>
+
     <h2>List of Autopilots</h2>
-        <button onclick="showModels()">Show All Models</button>
-        <div id="modelContainer" style="color: blue"></div>
+        <button onclick="showAutopilots()">Show All Autopilots</button>
+        <div id="autopilotContainer" style="color: blue"></div>
+
     <h2>List of Charging</h2>
-        <button onclick="showModels()">Show All Models</button>
-        <div id="modelContainer" style="color: blue"></div>
+        <button onclick="showChargings()">Show All Charging</button>
+        <div id="chargingContainer" style="color: blue"></div>
+
     <h2>List of Customers</h2>
-        <button onclick="showModels()">Show All Models</button>
-        <div id="modelContainer" style="color: blue"></div>
+        <button onclick="showCustomers()">Show All Customers</button>
+        <div id="customerContainer" style="color: blue"></div>
+
     <h2>List of Exteriors</h2>
-        <button onclick="showModels()">Show All Models</button>
-        <div id="modelContainer" style="color: blue"></div>
+        <button onclick="showExterior()">Show All Exteriors</button>
+        <div id="exteriorContainer" style="color: blue"></div>
+
     <h2>List of Interiors</h2>
-        <button onclick="showModels()">Show All Models</button>
-        <div id="modelContainer" style="color: blue"></div>
+        <button onclick="showInteriors()">Show All Interiors</button>
+        <div id="interiorContainer" style="color: blue"></div>
+
     <h2>List of Seats</h2>
-        <button onclick="showModels()">Show All Models</button>
-        <div id="modelContainer" style="color: blue"></div>
+        <button onclick="showSeats()">Show All Seats</button>
+        <div id="seatContainer" style="color: blue"></div>
+
     <h2>List of Tows</h2>
-        <button onclick="showModels()">Show All Models</button>
-        <div id="modelContainer" style="color: blue"></div>
+        <button onclick="showTows()">Show All Tows</button>
+        <div id="towContainer" style="color: blue"></div>
+
     <h2>List of Trims</h2>
-        <button onclick="showModels()">Show All Models</button>
-        <div id="modelContainer" style="color: blue"></div>
+        <button onclick="showTrims()">Show All Trims</button>
+        <div id="trimContainer" style="color: blue"></div>
+
     <h2>List of Wheels</h2>
-        <button onclick="showModels()">Show All Models</button>
-        <div id="modelContainer" style="color: blue"></div>
+        <button onclick="showWheels()">Show All Wheels</button>
+        <div id="wheelContainer" style="color: blue"></div>
 
 </body>
 </html>

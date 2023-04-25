@@ -51,7 +51,7 @@ public class JdbcAutopilotDao implements AutopilotDao {
     public List<Autopilot> getAllAutopilotOptions() {
         List <Autopilot> autopilots = new ArrayList<>();
         String sql = "SELECT * " +
-                "FROM autopilot ORDER BY autopilot_level_id;";
+                "FROM autopilot_level ORDER BY autopilot_level_id;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()){
             autopilots.add(mapRowToAutopilot(results));

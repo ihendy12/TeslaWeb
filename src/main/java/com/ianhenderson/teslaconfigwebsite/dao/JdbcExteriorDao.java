@@ -47,7 +47,7 @@ public class JdbcExteriorDao implements ExteriorDao {
     public List<Exterior> getAllExteriors() {
         List <Exterior> exteriors = new ArrayList<>();
         String sql = "SELECT * " +
-                "FROM exterior_color ORDER BY customer_color_id;";
+                "FROM exterior_color ORDER BY exterior_color_id;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()){
             exteriors.add(mapRowToExterior(results));
