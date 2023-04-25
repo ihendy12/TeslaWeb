@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        async function showModels(){
+            var response = await fetch('/api/models');
+            var models = await response.json();
+
+            var modelContainer = document.getElementById('modelContainer');
+            for(model of models){
+                var childDiv = document.createElement('div');
+                childDiv.innerHTML = model.name + " " + model.price;
+                modelContainer.appendChild(childDiv);
+            }
+        }
+    </script>
+</head>
+<body>
+    <H1>Welcome to my first webpage after learning Java</H1>
+    <h2>List of Models</h2>
+        <button onclick="showModels()">Show All Models</button>
+        <div id="modelContainer" style="color: blue"></div>
+</body>
+</html>
