@@ -1,0 +1,93 @@
+:root {
+    --primary-color: #cccccc;
+    --secondary-color: #999999;
+    --third-color: #666666;
+    --fourth-color: #333333;
+    --fifth-color: #000000;
+    --sixth-color: #cc0000;
+    --seventh-color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--primary-color);
+    color: black;
+    margin: 0;
+    font-family: 'Montserrat';
+    height: 100%;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+header {
+    position: absolute;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    background-color: var(--seventh-color);
+    width: 100%;
+    flex-direction: row;
+    position: fixed;
+    left: 0 !important;
+    top: 0 !important;
+    z-index: 9;
+
+}
+
+@font-face {
+    font-family: TESLA-FONT;
+    src: url(TESLA.ttf);
+}
+
+.logo {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--sixth-color);
+    font-size: 2rem;
+    flex-grow: 1;
+    font-family: TESLA-FONT;
+}
+
+span {
+    color: var(--fourth-color);
+}
+
+nav {
+    display: flex;
+    text-align: center;
+    height: 3em;
+    float: right;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding-right: 2em;
+}
+
+nav li {
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+a {
+    color: var(--third-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+#background-photo{
+    width: 100%;
+}

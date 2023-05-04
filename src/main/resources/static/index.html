@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Tesla Configurator</title>
+    <link rel="stylesheet" href="CSS/index.css">
     <script>
         async function showModels(){
             var response = await fetch('/api/models');
@@ -136,9 +137,51 @@
             }
         }
     </script>
+
+       
 </head>
 <body>
+    <header class="header-container">
+        <div>
+            <a id="logo" href="#">TESLA<span> CONFIGURATOR</span></a>
+            <div class="topnav">
+                <a class="active" href="#home">Home</a>
+                <a href="create.html">Create</a>
+                <a href="orders.html">Orders</a>
+                <a href="about.html">About</a>
+                <a href="profile.html">Profile</a>
+              </div>
+        </div>
+
+
+    </header>
+
+    <header>
+        <div class="header-container">
+            <a class="logo" href="#">TESLA <span>CONFIGURATOR</span></a>
+            <nav>
+                <ul id="primary-navigation" class="primary-navigation">
+                    <li>
+                        <a href="home.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="create.html">Create</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">Profile</a>  
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <H1>Tesla Configurator</H1>
+    <img id="background-photo" src="/Photos/fourTeslas.jpeg" alt="Four Tesla's">
     <h2>List of Models</h2>
         <button onclick="showModels()">Show All Models</button>
         <div id="modelContainer" style="color: blue"></div>
