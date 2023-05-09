@@ -100,3 +100,24 @@ a:hover {
     flex: 33.33%;
     padding: 5px;
   }
+
+  .imgContainer {
+    
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-size: cover;
+    
+  }
+
+  footer {
+    display: block;
+    align-content: center;
+    border: #000000;
+    border-radius: 5px;
+  }
+
+  .footerBox{
+    border: #000000;
+    border-radius: 5px;
+  }
